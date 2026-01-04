@@ -1,0 +1,43 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: expenses-service
+  namespace: sre-local
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: expenses-service
+  template:
+    metadata:
+      labels:
+        app: expenses-service
+    spec:
+      containers:
+        - name: expenses-service
+          image: expenses-service:local
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 8000
+          envFrom:
+            - configMapRef:
+                name: expenses-config
+          volumeMounts:
+            - name: expenses-db
+              mountPath: /data
+          readinessProbe:
+            httpGet:
+              path: /
+              port: 8000
+            initialDelaySeconds: 5
+            periodSeconds: 10
+          livenessProbe:
+            httpGet:
+              path: /
+              port: 8000
+            initialDelaySeconds: 15
+            periodSeconds: 20
+      volumes:
+        - name: expenses-db
+          persistentVolumeClaim:
+            claimName: expenses-db-pvc

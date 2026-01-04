@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: auth-config
+  namespace: sre-local
+data:
+  APP_NAME: "Auth Service"
+  DEBUG: "true"
+  DB_DIR: "/data"
+  DB_NAME: "users.db"
