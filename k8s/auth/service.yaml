@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: auth-service
+  namespace: sre-local
+spec:
+  selector:
+    app: auth-service
+  ports:
+    - port: 80
+      targetPort: 8000
+  type: ClusterIP

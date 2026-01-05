@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: expenses-config
+  namespace: sre-local
+data:
+  APP_NAME: "Expenses Service"
+  DEBUG: "true"
+  DB_DIR: "/data"
+  DB_NAME: "expenses.db"
+  ROOT_PATH: "/expenses"
