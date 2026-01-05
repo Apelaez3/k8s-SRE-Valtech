@@ -8,3 +8,4 @@ data:
   DEBUG: "true"
   DB_DIR: "/data"
   DB_NAME: "expenses.db"
+  ROOT_PATH: "/expenses"

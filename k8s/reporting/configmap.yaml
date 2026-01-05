@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: reporting-config
+  namespace: sre-local
+data:
+  ROOT_PATH: "/reports"
+  DB_DIR: "/data"
+  DB_NAME: "expenses.db"

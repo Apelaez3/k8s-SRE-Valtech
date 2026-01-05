@@ -25,4 +25,12 @@ spec:
                 name: expenses-service
                 port:
                   number: 80
+          - path: /reports(/|$)(.*)
+            pathType: ImplementationSpecific
+            backend:
+              service:
+                name: reporting-service
+                port:
+                  number: 80
+
 

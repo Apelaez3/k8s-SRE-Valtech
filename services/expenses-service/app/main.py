@@ -5,13 +5,18 @@ from app.db.base import Base
 from app.db.session import engine
 from app.api.expenses import router as expenses_router
 
-app = FastAPI(title=Config().APP_NAME, debug=Config().DEBUG)
+cfg = Config()
+
+app = FastAPI(
+    title=cfg.APP_NAME,
+    debug=cfg.DEBUG,
+    root_path=cfg.ROOT_PATH,
+)
 
 Base.metadata.create_all(bind=engine)
 
 @app.get("/")
 def root():
-    return {"status": "ok", "service": Config().APP_NAME}
-
+    return {"status": "ok", "service": cfg.APP_NAME}
 
 app.include_router(expenses_router, prefix="/api")

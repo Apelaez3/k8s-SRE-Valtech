@@ -8,3 +8,5 @@ data:
   DEBUG: "true"
   DB_DIR: "/data"
   DB_NAME: "users.db"
+  ROOT_PATH: "/auth"
+

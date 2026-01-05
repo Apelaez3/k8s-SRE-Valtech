@@ -7,6 +7,8 @@ class Config(BaseSettings):
     APP_NAME: str = "Auth Service"
     DEBUG: bool = False
 
+    ROOT_PATH: str = "/auth"
+
     DB_DIR: str = "/data"
     DB_NAME: str = "users.db"
 
@@ -16,4 +18,5 @@ class Config(BaseSettings):
 
     class Config:
         env_file = ".env"
+
 

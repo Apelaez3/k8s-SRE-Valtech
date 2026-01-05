@@ -9,6 +9,7 @@ class Config(BaseSettings):
 
     DB_DIR: str = "/data"
     DB_NAME: str = "expenses.db"
+    ROOT_PATH: str = "/expenses"
 
     @property
     def db_url(self) -> str:
