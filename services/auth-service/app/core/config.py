@@ -11,6 +11,9 @@ class Config(BaseSettings):
 
     DB_DIR: str = "/data"
     DB_NAME: str = "users.db"
+    JWT_SECRET: str = "change-me"
+    JWT_ALG: str = "HS256"
+    JWT_EXPIRE_MINUTES: int = 60
 
     @property
     def db_url(self) -> str:

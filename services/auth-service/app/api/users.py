@@ -4,6 +4,8 @@ from sqlalchemy.orm import Session
 from app.db.session import SessionLocal
 from app.schemas.user import UserCreate, UserRead
 from app.services.user_service import UserService
+from app.core.security import hash_password
+
 
 router = APIRouter(prefix="/users", tags=["users"])
 
@@ -29,10 +31,10 @@ def create_user(user: UserCreate, user_service: UserService = Depends(get_user_s
         raise HTTPException(status_code=400, detail="Username already registered")
 
     created = user_service.create_user(
-        username=user.username,
-        email=user.email,
-        full_name=user.full_name,
-        hashed_password=user.hashed_password,
+    username=user.username,
+    email=user.email,
+    full_name=user.full_name,
+    hashed_password=hash_password(user.password),
     )
     return created
 
