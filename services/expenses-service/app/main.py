@@ -11,6 +11,7 @@ app = FastAPI(
     title=cfg.APP_NAME,
     debug=cfg.DEBUG,
     root_path=cfg.ROOT_PATH,
+    redirect_slashes=False,
 )
 
 Base.metadata.create_all(bind=engine)

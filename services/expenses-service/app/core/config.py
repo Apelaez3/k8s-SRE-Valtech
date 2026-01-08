@@ -10,6 +10,9 @@ class Config(BaseSettings):
     DB_DIR: str = "/data"
     DB_NAME: str = "expenses.db"
     ROOT_PATH: str = "/expenses"
+    JWT_SECRET: str = "change-me"
+    JWT_ALG: str = "HS256"
+
 
     @property
     def db_url(self) -> str:

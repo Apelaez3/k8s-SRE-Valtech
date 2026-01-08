@@ -9,3 +9,5 @@ data:
   DB_DIR: "/data"
   DB_NAME: "expenses.db"
   ROOT_PATH: "/expenses"
+  JWT_SECRET: "super-secret-dev"
+  JWT_ALG: "HS256"
