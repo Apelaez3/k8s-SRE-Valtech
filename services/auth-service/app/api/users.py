@@ -5,6 +5,7 @@ from app.db.session import SessionLocal
 from app.schemas.user import UserCreate, UserRead
 from app.services.user_service import UserService
 from app.core.security import hash_password
+from app.deps import get_current_user
 
 
 router = APIRouter(prefix="/users", tags=["users"])
@@ -40,8 +41,13 @@ def create_user(user: UserCreate, user_service: UserService = Depends(get_user_s
 
 
 @router.get("/{username}", response_model=UserRead)
-def get_user(username: str, user_service: UserService = Depends(get_user_service)):
+def get_user(
+    username: str,
+    user_service: UserService = Depends(get_user_service),
+    _claims: dict = Depends(get_current_user),
+):
     user = user_service.get_user_by_username(username=username)
     if not user:
         raise HTTPException(status_code=404, detail="User not found")
     return user
+
